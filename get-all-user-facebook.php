@@ -54,7 +54,7 @@ if (isset($accessToken)) {
 		if ($e->getCode() == 190) {
 			unset($_SESSION['facebook_access_token']);
 			$helper = $fb->getRedirectLoginHelper();
-			$loginUrl = $helper->getLoginUrl('https://localhost/Mycont-fb/get-all-hder-facebook.php', $permissions);
+			$loginUrl = $helper->getLoginUrl('https://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
 			echo "<script>window.top.location.href='".$loginUrl."'</script>";
 			exit;
 		}
@@ -95,6 +95,6 @@ if (isset($accessToken)) {
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
 	$helper = $fb->getRedirectLoginHelper();
-	$loginUrl = $helper->getLoginUrl('https://localhost/Mycont-fb/get-all-hder-facebook.php', $permissions);
+	$loginUrl = $helper->getLoginUrl('https://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
 	echo "<script>window.top.location.href='".$loginUrl."'</script>";
 }
