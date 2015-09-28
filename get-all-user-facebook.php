@@ -1,3 +1,8 @@
+<!doctype html>
+<html>
+<meta charset="utf-8">
+
+
 <?php
 session_start();
 require_once __DIR__ . '/src/Facebook/autoload.php';
@@ -86,8 +91,12 @@ if (isset($accessToken)) {
 			$response_array = $posts_response->asArray();
 			$total_posts = array_merge($total_posts, $response_array);	
 		}
-		print_r($total_posts);
-	} else {
+		print_r($total_posts  );
+                //var_dump($total_posts);
+                //แสดงผลที่ได้จากการ Get 
+
+        
+        }else {
 		$posts_response = $posts_request->getGraphEdge()->asArray();
 		print_r($posts_response);
 	}
@@ -98,3 +107,6 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('http://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
 	echo "<script>window.top.location.href='".$loginUrl."'</script>";
 }
+
+
+?>
