@@ -1,15 +1,3 @@
-# Mycon-fb console command
-/Mycon-fb
-
-# phpstorm project files
-.idea
-
-# netbeans project files
-nbproject
-
-# zend studio for eclipse project files
-.buildpath
-.project
 
 # composer vendor dir
 /vendor
