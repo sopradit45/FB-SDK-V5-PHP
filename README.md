@@ -6,10 +6,10 @@ My Facebook Connet app  Test <hr>
 
 
 
-<a href="http://localhost/ 'root' ">Log in with Facebook!</a><hr width="300" align="left" >';
-<a href="http://localhost/ 'root' ">Log in with Facebook!</a><hr width="300" align="left" >';
-<a href="http://localhost/ 'root' ">Log in with Facebook!</a><hr width="300" align="left" >';
-<a href="http://localhost/ 'root' ">Log in with Facebook!</a><hr width="300" align="left" >';
-<a href="http://localhost/ 'root' ">Log in with Facebook!</a><hr width="300" align="left" >';
-<a href="http://localhost/ 'root' ">Log in with Facebook!</a><hr width="300" align="left" >';
+<a href="http://localhost/ 'root' "> Log in with Facebook!</a><hr width="300" align="left" >
+<a href="http://localhost/ 'root' "> Log in with Facebook!</a><hr width="300" align="left" >
+<a href="http://localhost/ 'root' "> Log in with Facebook!</a><hr width="300" align="left" >
+<a href="http://localhost/ 'root' "> Log in with Facebook!</a><hr width="300" align="left" >
+<a href="http://localhost/ 'root' "> Log in with Facebook!</a><hr width="300" align="left" >
+<a href="http://localhost/ 'root' "> Log in with Facebook!</a><hr width="300" align="left" >
  
