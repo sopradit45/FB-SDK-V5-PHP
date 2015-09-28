@@ -57,7 +57,7 @@ if (isset($accessToken)) {
 	exit;
 	}
 
-	echo 'Login Is Facebook Ok  Hello :   ' . $userNode->getName();
+	echo 'Login Is Facebook Ok  Hello :  ' . $userNode->getName();
 
   	// Now you can redirect to another page and use the
   	// access token from $_SESSION['facebook_access_token']

@@ -54,7 +54,7 @@ if (isset($accessToken)) {
 		if ($e->getCode() == 190) {
 			unset($_SESSION['facebook_access_token']);
 			$helper = $fb->getRedirectLoginHelper();
-			$loginUrl = $helper->getLoginUrl('https://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
+			$loginUrl = $helper->getLoginUrl('http://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
 			echo "<script>window.top.location.href='".$loginUrl."'</script>";
 			exit;
 		}
@@ -66,7 +66,7 @@ if (isset($accessToken)) {
 
 	// getting all posts published by user
 	try {
-		$posts_request = $fb->get('/me/posts?limit=500');
+		$posts_request = $fb->get('/me/posts?limit=5');
 	} catch(Facebook\Exceptions\FacebookResponseException $e) {
 		// When Graph returns an error
 		echo 'Graph returned an error: ' . $e->getMessage();
@@ -77,7 +77,7 @@ if (isset($accessToken)) {
 		exit;
 	}
 
-	$total_posts = array();
+	$total_posts = [];
 	$posts_response = $posts_request->getGraphEdge();
 	if($fb->next($posts_response)) {
 		$response_array = $posts_response->asArray();
@@ -95,6 +95,6 @@ if (isset($accessToken)) {
   	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
 } else {
 	$helper = $fb->getRedirectLoginHelper();
-	$loginUrl = $helper->getLoginUrl('https://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
+	$loginUrl = $helper->getLoginUrl('http://localhost/Mycont-fb/get-all-user-facebook.php', $permissions);
 	echo "<script>window.top.location.href='".$loginUrl."'</script>";
 }
