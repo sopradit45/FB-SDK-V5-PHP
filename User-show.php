@@ -10,7 +10,26 @@ $fb = new Facebook\Facebook([
   ]);
 
 $helper = $fb->getRedirectLoginHelper();
+	
+try {
+	if (isset($_SESSION['facebook_access_token'])) {
+		$accessToken = $_SESSION['facebook_access_token'];
+	} else {
+  		$accessToken = $helper->getAccessToken();
+	}
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+ 	// When Graph returns an error
+ 	echo 'Graph returned an error: ' . $e->getMessage();
+  	exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+ 	// When validation fails or other local issues
+	echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  	exit;
+ }
 
+
+if (isset($accessToken)) {
+    
 if(isset($_SESSION['facebook_access_token'])) {
 		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
 	} else {
@@ -31,6 +50,7 @@ if(isset($_SESSION['facebook_access_token'])) {
 	$response = $fb->get('me?fields=email,name');
         $picture = $UserPicture->getGraphUser();
 	$userNode = $response->getGraphUser();
+        
 	} 
         
         catch(Facebook\Exceptions\FacebookResponseException $e) {
@@ -52,4 +72,13 @@ if(isset($_SESSION['facebook_access_token'])) {
         echo '<hr width="300" align="left" > รหัส ไอดีของคุณ  :  ' . $userNode->getId();
         echo ' <hr width="300" align="left" > อีเมลล์ของคุณ :  ' . $userNode->getEmail();
         echo '<hr width="300" align="left" >';
-         
+        $LogutUrl=$helper->getLogoutUrl('http://localhost/Mycont-fb/User-show.php',$accessToken);
+        echo '<a href="'.$LogutUrl .'">logut</a>';
+       
+}else {
+	$permissions = ['email']; // optional
+	$loginUrl = $helper->getLoginUrl('http://localhost/Mycont-fb/User-show.php', $permissions);
+
+	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+}
+        

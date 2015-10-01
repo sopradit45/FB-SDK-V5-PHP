@@ -1,9 +1,10 @@
 <?php
-// start session
+
 session_start();
-// kill the session
-session_destroy();
-// redirect back to website home
+require_once __DIR__ . '/src/Facebook/autoload.php';
 
-
-// header( 'http://localhost/Mycont-fb/' );ession,'http://example.com');
+$fb = new Facebook\Facebook([
+  'app_id' => '740357906069989',
+  'app_secret' => '85be710ace9ac4e630fdcff56e51bdbd',
+  'default_graph_version' => 'v2.4',
+  ]);
