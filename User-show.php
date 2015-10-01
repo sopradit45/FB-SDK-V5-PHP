@@ -27,9 +27,9 @@ if(isset($_SESSION['facebook_access_token'])) {
 	} 
         
    try {
-        $responsePicture = $fb->get('/me/picture?redirect=false&height=300');
+        $UserPicture = $fb->get('/me/picture?redirect=false&height=300');
 	$response = $fb->get('me?fields=email,name');
-        $picture = $responsePicture->getGraphUser();
+        $picture = $UserPicture->getGraphUser();
 	$userNode = $response->getGraphUser();
 	} 
         
@@ -50,6 +50,6 @@ if(isset($_SESSION['facebook_access_token'])) {
 	echo "<img src='".$picture['url']."'/>";
 	echo '<hr width="300" align="left" > สวัสดีครับ คุณ :  ' . $userNode->getName();
         echo '<hr width="300" align="left" > รหัส ไอดีของคุณ  :  ' . $userNode->getId();
-        echo ' <hr width="300" align="left" > อีเมลลืของคุณ :  ' . $userNode->getEmail();
+        echo ' <hr width="300" align="left" > อีเมลล์ของคุณ :  ' . $userNode->getEmail();
         echo '<hr width="300" align="left" >';
          
