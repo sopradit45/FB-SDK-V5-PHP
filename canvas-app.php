@@ -10,6 +10,7 @@ $fb = new Facebook\Facebook([
   ]);
 
 $helper = $fb->getCanvasHelper();
+
 try {
   $accessToken = $helper->getAccessToken();
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
@@ -22,12 +23,17 @@ try {
   exit;
 }
 
-if (isset($accessToken)) {
-    
-    echo 'Graph returned an error: ' . $e->getMessage();
-  // Logged in.
+if ( isset($accessToken)) {
+echo '<h3>Signed Request</h3>';
+var_dump($helper->getSignedRequest());
+echo '<h3>Access Token</h3>';
+var_dump($helper->getAccessToken());
+  echo 'No OAuth data could be obtained from the signed request. User has not authorized your app yet.';
+  exit;
 }
-echo 'ok';
- echo $accessToken;
- 
- 
+// Logged in
+echo '<h3>Signed Request</h3>';
+var_dump($helper->getSignedRequest());
+
+echo '<h3>Access Token</h3>';
+var_dump($accessToken->getValue());

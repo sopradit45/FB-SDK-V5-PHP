@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <?php
 session_start();
 require_once __DIR__ . '/src/Facebook/autoload.php';
@@ -26,8 +27,10 @@ try {
   	exit;
  }
 
+ 
+ 
 if (isset($accessToken)) {
-
+    
 	if(isset($_SESSION['facebook_access_token'])) {
 		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
 	} else {
@@ -42,9 +45,15 @@ if (isset($accessToken)) {
 
 		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
 	}
+        
 
+ 
+        
+        
 	try {
-	$response = $fb->get('/me');
+        $responsePicture = $fb->get('/me/picture?redirect=false&height=300');
+	$response = $fb->get('me?fields=email,name');
+        $picture = $responsePicture->getGraphUser();
 	$userNode = $response->getGraphUser();
 	} catch(Facebook\Exceptions\FacebookResponseException $e) {
 	// When Graph returns an error
@@ -56,8 +65,11 @@ if (isset($accessToken)) {
 	echo 'Facebook SDK returned an error: ' . $e->getMessage();
 	exit;
 	}
-
-	echo 'Login Is Facebook Ok  Hello :  ' . $userNode->getName();
+	echo "<img src='".$picture['url']."'/>";
+	echo '<hr width="300" align="left" > สวัสดีครับ คุณ :  ' . $userNode->getName();
+        echo '<hr width="300" align="left" > รหัส ไอดีของคุณ  :  ' . $userNode->getId();
+        echo ' <hr width="300" align="left" > อีเมลลืของคุณ :  ' . $userNode->getEmail();
+        echo '<hr width="300" align="left" >';
 
   	// Now you can redirect to another page and use the
   	// access token from $_SESSION['facebook_access_token']
@@ -67,3 +79,4 @@ if (isset($accessToken)) {
 
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
+
